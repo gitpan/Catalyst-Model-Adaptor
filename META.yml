@@ -5,7 +5,6 @@ author:
 build_requires: 
   Catalyst::Runtime: 0
   Test::More: 0
-  Test::WWW::Mechanize::Catalyst: 0
   ok: 0
 distribution_type: module
 generated_by: Module::Install version 0.68
@@ -20,4 +19,4 @@ no_index:
     - t
 requires: 
   Class::C3: 0
-version: 0.02
+version: 0.03
