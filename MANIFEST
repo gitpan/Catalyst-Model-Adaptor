@@ -34,6 +34,7 @@ t/lib/TestApp/Controller/Factory.pm
 t/lib/TestApp/Controller/PerRequest.pm
 t/lib/TestApp/Controller/Root.pm
 t/lib/TestApp/Model/Factory.pm
+t/lib/TestApp/Model/NoArgs.pm
 t/lib/TestApp/Model/PerRequest.pm
 t/lib/TestApp/Model/SomeClass.pm
 t/live-test.t
