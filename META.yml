@@ -21,8 +21,7 @@ no_index:
     - inc
     - t
 requires:
-  Class::C3: 0
+  MRO::Compat: 0
 resources:
   license: http://dev.perl.org/licenses/
-  repository: http://github.com/jrockway/catalyst-model-adaptor
-version: 0.04
+version: 0.05
