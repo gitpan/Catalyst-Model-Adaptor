@@ -24,4 +24,5 @@ requires:
   MRO::Compat: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.05
+  repository: http://github.com/jrockway/catalyst-model-adaptor
+version: 0.06
