@@ -3,7 +3,7 @@ use strict;
 use warnings;
 use base 'Catalyst::Model::Adaptor::Base';
 
-our $VERSION = '0.08';
+our $VERSION = '0.09';
 
 sub COMPONENT {
     my ($class, $app, @rest) = @_;
@@ -34,7 +34,7 @@ Wrap it with a Catalyst model:
     use base 'Catalyst::Model::Adaptor';
     __PACKAGE__->config( class => 'NotMyApp::SomeClass' );
 
-Then you can use C<NotMyApp::Class> from your Catalyst app:
+Then you can use C<NotMyApp::SomeClass> from your Catalyst app:
 
     sub action :Whatever {
         my ($self, $c) = @_;
