@@ -1,16 +1,29 @@
 package Catalyst::Model::Adaptor;
 use strict;
 use warnings;
+use MRO::Compat;
+
 use base 'Catalyst::Model::Adaptor::Base';
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 sub COMPONENT {
     my ($class, $app, @rest) = @_;
-    my $self = $class->next::method($app, @rest);
+    my $arg = {};
+    if ( scalar @rest ) {
+        if ( ref($rest[0]) eq 'HASH' ) {
+            $arg = $rest[0];
+        }
+        else {
+            $arg = { @rest };
+        }
+    }
+    my $self = $class->next::method($app, $arg);
 
     $self->_load_adapted_class;
-    return $self->_create_instance($app);
+    return $self->_create_instance(
+        $app, $class->merge_config_hashes($class->config || {}, $arg)
+    );
 }
 
 1;
@@ -146,6 +159,15 @@ this:
 Since a static hashref of arguments may not be what C<$class> needs,
 you can override the following methods to change what C<$args> is.
 
+NOTE: If you need to pass some args at instance time, you can do something
+like:
+
+    my $model = $c->model('MyFoo', { foo => 'myfoo' });
+
+or
+
+    my $model = $c->model('MyFoo', foo => 'myfoo');
+
 =head2 prepare_arguments
 
 This method is passed the entire configuration for the class and the
@@ -193,6 +215,10 @@ instead.
 =head1 AUTHOR
 
 Jonathan Rockway C<< <jrockway@cpan.org> >>
+
+=head1 CONTRIBUTORS
+
+Wallace Reis C<< <wreis@cpan.org> >>
 
 =head1 LICENSE
 

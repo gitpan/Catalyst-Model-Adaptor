@@ -1,17 +1,16 @@
 package Catalyst::Model::Factory::PerRequest;
 use strict;
 use warnings;
+use MRO::Compat;
 
 use base 'Catalyst::Model::Factory';
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 sub ACCEPT_CONTEXT {
-    my ($self, $context) = @_;
-
+    my ($self, $context, @args) = @_;
     my $id = '__'. ref $self;
-    $context->stash->{$id} ||= $self->_create_instance($context);
-    return $context->stash->{$id};
+    return $context->stash->{$id} ||= $self->next::method($context, @args);
 }
 
 1;
